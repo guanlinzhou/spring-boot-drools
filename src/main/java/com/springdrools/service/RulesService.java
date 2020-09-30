@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Singleton class that wraps
  * the Drools KieSession and is responsible
@@ -47,9 +49,14 @@ public class RulesService {
         return item;
     }
 
-    public Purchase firePurchaseRules(Purchase purchase) {
+    public Purchase.Result firePurchaseRules(Purchase purchase) {
+        List<Item> items = purchase.getItems();
+        for (int i = 0; i < items.size(); i++) {
+            purchase.setItem(i, fireRules((items.get(i))));
+        }
+        purchase.calculate();
         this.kieSession.insert(purchase);
         this.kieSession.fireAllRules();
-        return purchase;
+        return purchase.calculate();
     }
 }

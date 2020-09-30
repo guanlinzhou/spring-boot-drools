@@ -19,7 +19,7 @@ end
 
 rule "Total Cost Sale"
     when
-        $p: Purchase(subtotal > 100)
+        $p: Purchase(total > 100)
     then
         $p.setDiscount(20.0);
 end
@@ -28,26 +28,26 @@ rule "Tax - California"
     when
         $p: Purchase(state == "California")
     then
-        $p.setTax(7.25);
+        $p.setTaxRate(7.25);
 end
 
 rule "Tax - Colorado"
     when
         $p: Purchase(state == "Colorado")
     then
-        $p.setTax(2.9);
+        $p.setTaxRate(2.9);
 end
 
 rule "Tax - India"
     when
         $p: Purchase(state == "India")
     then
-        $p.setTax(18.0);
+        $p.setTaxRate(18.0);
 end
 
 rule "Tax - British Columbia"
     when
         $p: Purchase(state == "British Columbia")
     then
-        $p.setTax(12.0);
+        $p.setTaxRate(12.0);
 end

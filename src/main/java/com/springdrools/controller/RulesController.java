@@ -21,15 +21,9 @@ public class RulesController {
         return finished;
     }
 
-    // TODO: Implement this method according to the patterns we suggested earlier
     @PostMapping("/purchase")
-    public Double totalCost(@RequestBody Purchase purchase) {
-        Purchase finished = this.rulesService.firePurchaseRules(purchase);
-        System.out.println(purchase.getDiscountsApplied());
-        System.out.println(purchase.getItemsPurchased());
-        System.out.println(purchase.getSubtotal());
-        System.out.println(purchase.getTaxedCost());
-        System.out.println(purchase.getTotalCost());
-        return finished.getTotalCost();
+    public Purchase.Result totalCost(@RequestBody Purchase purchase) {
+        Purchase.Result finished = this.rulesService.firePurchaseRules(purchase);
+        return finished;
     }
 }
