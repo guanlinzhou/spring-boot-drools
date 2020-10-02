@@ -21,9 +21,9 @@ public class RulesController {
         return finished;
     }
 
-    // TODO: Implement this method according to the patterns we suggested earlier
     @PostMapping("/purchase")
-    public Double totalCost(@RequestBody Purchase purchase) {
-        throw new UnsupportedOperationException();
+    public Purchase.Result totalCost(@RequestBody Purchase purchase) {
+        Purchase.Result finished = this.rulesService.firePurchaseRules(purchase);
+        return finished;
     }
 }
