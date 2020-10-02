@@ -65,7 +65,7 @@ public class RulesController {
 ```
 # Sample JSON call to pass Object
 ```
-curl -X POST localhost:8080/items -H 'Content-Type: application/json' -d '{"id": 2, "name": "Test", "cost": 100}'
+curl -X POST localhost:8080/item -H 'Content-Type: application/json' -d '{"id": 2, "name": "Test", "cost": 100}'
 
 Output:
 {"id":2,"name":"Test","cost":100.0,"category":"LOW_RANGE"}
